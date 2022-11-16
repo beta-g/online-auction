@@ -1,0 +1,128 @@
+<style>
+
+
+#slider{
+  margin:0 auto;
+  width:100%;
+  overflow:hidden;
+}
+
+.slides{
+  overflow:hidden;
+  animation-name:fade;
+  animation-duration:0.5s;
+  display:none;
+}
+
+img{
+  width:100%;
+}
+.caption {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+	width: 60%;
+	z-index: 9;
+	margin-top: 20px;
+	text-align: center;
+}
+.caption h1 {
+  color: #fff;
+	font-size: 52px;
+	font-weight: 700;
+	margin-bottom: 23px;
+}
+.caption h2 {
+  color: rgba(255,255,255,.75);
+	font-size: 26px;
+	font-weight: 300;
+}
+#dot{
+  margin:0 auto;
+  text-align:center;
+}
+.dot{
+  display:inline-block;
+  border-radius:50%;
+  background:#d3d3d3;
+  padding:8px;
+  margin:10px 5px;
+}
+
+.active{
+  background:black;
+}
+
+@media (max-width:567px){
+  #slider{
+    width:100%;
+
+  }
+}
+
+#heading{
+  display:block;
+  text-align:center;
+  font-size:2em;
+  margin:10px 0px;
+
+}
+
+</style>
+  <div id="slider">  
+  <div class="slides">  
+    <img src="images/images.jpg" width="100%" />
+   
+</div>
+    <div class="slides">  
+    <img src="images/download (1).jpg"width="100%" />
+  </div> 
+  
+    
+  <div class="slides">  
+    <img src="images/images (3).jpg" width="100%" />
+  </div>  
+</div>
+<div class="slides">  
+<img src="images/download (1).jpg" width="100%" />
+</div> 
+
+
+<div class="slides">  
+<img src="images/images (3).jpg" width="100%" />
+</div>  
+
+    <div id="dot"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+   </div>
+<script>
+    var index = 0;
+var slides = document.querySelectorAll(".slides");
+var dot = document.querySelectorAll(".dot");
+
+function changeSlide(){
+
+  if(index<0){
+    index = slides.length-1;
+  }
+  
+  if(index>slides.length-1){
+    index = 0;
+  }
+  
+  for(let i=0;i<slides.length;i++){
+    slides[i].style.display = "none";
+    dot[i].classList.remove("active");
+  }
+  
+  slides[index].style.display= "block";
+  dot[index].classList.add("active");
+  
+  index++;
+  
+  setTimeout(changeSlide,2000);
+  
+}
+
+changeSlide();
+</script>
